@@ -1,14 +1,10 @@
 const firebase = require('firebase-admin');
-require('dotenv').config({path: '../../'});
-
-// const databaseUrl = process.env;
-// const serviceAccount = process.env.DATABASE_KEY//JSON.parse(process.env.DATABASE_KEY);
-console.log(process.env)
-return
+require('dotenv').config();
+const index = require('../index')
 
 firebase.initializeApp({
-    credential: firebase.credential.cert(JSON.parse(process.env.DATABASE_KEY)),
-    databaseURL: process.env.DATABASE_URL
+    credential: firebase.credential.cert(JSON.parse(index.serviceAccount)),
+    databaseURL: index.databaseUrl
 });
 
 module.exports = {
